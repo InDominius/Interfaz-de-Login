@@ -9,7 +9,7 @@ ventana.configure(bg="white")
 ventana.resizable(False, False)
 
 # Insertar en la funcion sistema de datos
-def registro():
+def iniciar_sesion():
   usuario=usuario_login.get()
   contraseña=contraseña_login.get()
 
@@ -74,7 +74,7 @@ contraseña_login.bind("<FocusOut>", al_salir)
 Frame(ventana_extendida, width=325, height=2, bg="black").place(x=26, y=193)
 
 #================================================================
-Button(ventana_extendida, width=39, pady=7, text="Iniciar sesión", bg="#B76E22", fg="white", border=0, command=registro).place(x=50, y=220)
+Button(ventana_extendida, width=39, pady=7, text="Iniciar sesión", bg="#B76E22", fg="white", border=0, command=iniciar_sesion).place(x=50, y=220)
 etiqueta_final=Label(ventana_extendida, text="¿No tienes cuenta de KOED?", fg="black", bg="white", font=("Microsoft YaHei UI Light", 9))
 etiqueta_final.place(x=55, y=280)
 
