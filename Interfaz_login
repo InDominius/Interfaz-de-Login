@@ -65,7 +65,7 @@ def al_salir(e):
   if nombre=="":
     contraseña_login.insert(0, "Contraseña")
 
-contraseña_login = Entry(ventana_extendida, width=25, fg="black", border=0, bg="white", font=("Microsoft YaHei UI Light", 11))
+contraseña_login = Entry(ventana_extendida, width=25, fg="black", border=0, bg="white", font=("Microsoft YaHei UI Light", 11), show="*")
 contraseña_login.place(x=30, y=170)
 contraseña_login.insert(0, "Contraseña")
 contraseña_login.bind("<FocusIn>", al_clickear)
