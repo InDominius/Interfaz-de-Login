@@ -1,0 +1,91 @@
+import tkinter
+from tkinter import messagebox
+from tkinter import *
+
+ventana = tkinter.Tk()
+ventana.title('Sistema de Login')
+ventana.geometry('925x500+300+200')
+ventana.configure(bg="white")
+ventana.resizable(False, False)
+
+# Insertar en la funcion sistema de datos
+def registro():
+  usuario=usuario_login.get()
+  contraseña=contraseña_login.get()
+
+  if usuario =="admin" and contraseña=="1234":
+    pantalla=Toplevel(ventana)
+    pantalla.title("Sesión online")
+    pantalla.geometry('925x500+300+200')
+    pantalla.config(bg="white")
+
+    Label(pantalla, text="¡Bienvenido a KOED!", bg= "#fff", font=("Calibri(Body)", 50, "bold")).pack(expand=True)
+
+    pantalla.mainloop()
+
+  elif usuario !="admin" and contraseña != "1234":
+    messagebox.showerror("¡Incorrecto!", "El usuario y contraseña es incorrecto")
+  elif contraseña != "1234":
+    messagebox.showerror("¡Incorrecto!", "La contraseña es incorrecta")
+  elif usuario != "admin":
+    messagebox.showerror("¡Incorrecto!", "El usuario es incorrecto")
+
+
+ventana_extendida=Frame(ventana, width=450, height=350, bg="white")
+ventana_extendida.place(x=350, y=70)
+
+titulo_login=Label(ventana_extendida, text = "Iniciar sesión en \nKOED", fg="#B76E22", bg="white", font=("Microsoft YaHei UI Light", 23, "bold"))
+titulo_login.place(x=65, y=5)
+
+#================================================================
+def al_clickear(e):
+  usuario_login.delete(0, 'end')
+
+def al_salir(e):
+  nombre = usuario_login.get()
+  if nombre=="":
+    usuario_login.insert(0, "Usuario")
+
+
+usuario_login = Entry(ventana_extendida, width=25, fg="black", border=0, bg="white", font=("Microsoft YaHei UI Light", 11))
+usuario_login.place(x=30, y=100)
+usuario_login.insert(0, "Usuario")
+usuario_login.bind("<FocusIn>", al_clickear)
+usuario_login.bind("<FocusOut>", al_salir)
+
+Frame(ventana_extendida, width=325, height=2, bg="black").place(x=26, y=123)
+
+#================================================================
+
+def al_clickear(e):
+  contraseña_login.delete(0, 'end')
+
+def al_salir(e):
+  nombre = contraseña_login.get()
+  if nombre=="":
+    contraseña_login.insert(0, "Contraseña")
+
+contraseña_login = Entry(ventana_extendida, width=25, fg="black", border=0, bg="white", font=("Microsoft YaHei UI Light", 11))
+contraseña_login.place(x=30, y=170)
+contraseña_login.insert(0, "Contraseña")
+contraseña_login.bind("<FocusIn>", al_clickear)
+contraseña_login.bind("<FocusOut>", al_salir)
+
+Frame(ventana_extendida, width=325, height=2, bg="black").place(x=26, y=193)
+
+#================================================================
+Button(ventana_extendida, width=39, pady=7, text="Iniciar sesión", bg="#B76E22", fg="white", border=0, command=registro).place(x=50, y=220)
+etiqueta_final=Label(ventana_extendida, text="¿No tienes cuenta de KOED?", fg="black", bg="white", font=("Microsoft YaHei UI Light", 9))
+etiqueta_final.place(x=55, y=280)
+
+registro_final = Button(ventana_extendida, width=8, text="Registrate", border=0, bg='white', cursor="hand2", fg="#B76E22")
+registro_final.place(x=230, y=280)
+
+
+imagen = PhotoImage(file=r"C:\Users\doyou\Desktop\Code\Code for KOED\Koed.PNG")
+Label(ventana, image=imagen, bg="white").place(x=10,y=150)
+
+ventana.mainloop()
+
+
+
